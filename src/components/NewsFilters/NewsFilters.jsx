@@ -3,6 +3,7 @@ import { useFetch } from '../../helpers/hooks/useFetch';
 
 import Categories from '../Categories/Categories';
 import Search from '../Search/Search';
+import Slider from '../Slider/Slider';
 
 import style from './style.module.css';
 
@@ -12,13 +13,15 @@ const NewsFilters = ({ filters, changeFilters }) => {
   return (
     <div className={style.filters}>
       {dataCategories ? (
-        <Categories
-          categories={dataCategories.categories}
-          selectedCategory={filters?.category}
-          setSelectedCategory={(category) =>
-            changeFilters('category', category)
-          }
-        />
+        <Slider>
+          <Categories
+            categories={dataCategories.categories}
+            selectedCategory={filters?.category}
+            setSelectedCategory={(category) =>
+              changeFilters('category', category)
+            }
+          />
+        </Slider>
       ) : null}
 
       <Search
